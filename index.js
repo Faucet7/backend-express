@@ -50,7 +50,10 @@ app.get("/api/wx_openid", async (req, res) => {
 });
 
 app.get("/api/msg/receive", async (req, res) => {
-  res.send("success!");
+  res.send({
+    code: 0,
+    data: "hello world",
+  });
 });
 
 const port = process.env.PORT || 80;
