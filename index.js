@@ -49,10 +49,14 @@ app.get("/api/wx_openid", async (req, res) => {
   }
 });
 
-app.get("/api/msg/receive", async (req, res) => {
+app.all("/api/msg/receive", async (req, res) => {
+  const CreateTime = Date.parse(new Date()) / 1000;
   res.send({
-    code: 0,
-    data: "hello world",
+    ToUserName: req.body.FromUserName,
+    FromUserName: req.body.ToUserName,
+    CreateTime,
+    MsgType: "text",
+    Content: "Hello!" + CreateTime,
   });
 });
 
